@@ -13,7 +13,7 @@ class ParkingDecisionDb:
         with SqliteConnection(db_file=self.db_file) as sqlite_connection:
             sqlite_connection.execute_query(query=self.create_license_plate_table_query)
 
-    def insert_parking_decision(self, plate_number, decision, log_time):
+    def insert_parking_decision(self, plate_number: str, decision: bool, log_time: float):
         with SqliteConnection(db_file=self.db_file) as sqlite_connection:
             sqlite_connection.execute_query(query=f"""INSERT INTO {self.table_name} (plate_number, decision, log_time)
                                             VALUES ('{plate_number}', {int(decision)}, {log_time})""")

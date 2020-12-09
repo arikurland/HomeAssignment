@@ -3,7 +3,7 @@ from sqlite3 import Error
 
 
 class SqliteConnection:
-    def __init__(self, db_file):
+    def __init__(self, db_file: str):
         self.db_file = db_file
 
     def __enter__(self):
@@ -28,7 +28,7 @@ class SqliteConnection:
 
         return conn
 
-    def execute_query(self, query):
+    def execute_query(self, query: str):
         self.cursor.execute(query)
         self.conn.commit()
         self.cursor.execute('SELECT * FROM parking_decision_logs')
